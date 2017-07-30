@@ -2,7 +2,6 @@ package net.orekyuu.riho;
 
 import com.intellij.execution.ExecutionManager;
 import com.intellij.notification.Notifications;
-import com.intellij.openapi.compiler.CompilerTopics;
 import com.intellij.openapi.components.ProjectComponent;
 import com.intellij.openapi.diagnostic.Logger;
 import com.intellij.openapi.editor.Editor;
@@ -13,7 +12,6 @@ import com.intellij.openapi.project.Project;
 import com.intellij.refactoring.listeners.RefactoringEventListener;
 import com.intellij.util.messages.MessageBusConnection;
 import net.orekyuu.riho.character.CharacterBorder;
-import net.orekyuu.riho.events.CompilationListener;
 import net.orekyuu.riho.events.NotificationListener;
 import net.orekyuu.riho.events.RefactoringListener;
 import net.orekyuu.riho.topics.RihoReactionNotifier;
@@ -65,8 +63,6 @@ public class RihoPlugin implements ProjectComponent {
         MessageBusConnection connect = project.getMessageBus().connect();
         connect.subscribe(Notifications.TOPIC, new NotificationListener(project));
         connect.subscribe(RefactoringEventListener.REFACTORING_EVENT_TOPIC, new RefactoringListener(project));
-        connect.subscribe(CompilerTopics.COMPILATION_STATUS, new CompilationListener(project));
-
     }
 
     @Override
