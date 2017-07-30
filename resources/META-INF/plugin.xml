@@ -2,14 +2,13 @@
   <id>net.orekyuu.riho</id>
   <name>Riho</name>
   <version>1.0</version>
+  <vendor email="orekyuu@gmail.com" url="https://github.com/orekyuu">orekyuu</vendor>
 
   <description><![CDATA[
       Show pretty girls to support development:)
     ]]></description>
 
   <change-notes><![CDATA[
-      Add change notes here.<br>
-      <em>most HTML tags may be used</em>
     ]]>
   </change-notes>
 
@@ -25,7 +24,6 @@
   <extensions defaultExtensionNs="com.intellij">
     <!-- Add your extensions here -->
     <testStatusListener implementation="net.orekyuu.riho.events.TestListener"/>
-    <programRunner implementation="net.orekyuu.riho.events.ProgramRunnerListener"/>
   </extensions>
 
   <actions>
