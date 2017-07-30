@@ -29,16 +29,16 @@ public class QuestionRenderer extends EmotionRenderer {
         int posY = charaY + 10;
         long millis = currentLoopTime.toMillis();
 
+        float alpha = 1.0f;
         if (millis < startMoveTime) {
             double a = ImageUtil.defaultScale(60) * Math.sin(millis / (startMoveTime * 2) * Math.PI * 2);
             posY -= a;
         } else if (millis < startMoveTime + waitTime) {
             // ignored
         } else {
-            float alpha = Math.max(((float)loopTime - millis) / (float)loopTime, 0);
-            ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, alpha));
+            alpha = Math.max(((float)loopTime - millis) / (float)loopTime, 0);
         }
-        ImageUtil.drawImage(g, image, charaX + ImageUtil.defaultScale(190), posY);
+        ImageUtil.drawImage(g, image, charaX + ImageUtil.defaultScale(190), posY, alpha);
 
         if (loopTime < millis) {
             nextLoop();
