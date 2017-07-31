@@ -6,11 +6,11 @@ import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.UncheckedIOException;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.HashMap;
 
 public class ImageResources {
 
-    private static ConcurrentHashMap<String, BufferedImage> resources = new ConcurrentHashMap<>();
+    private static HashMap<String, BufferedImage> resources = new HashMap<>();
 
     public static BufferedImage character() {
         return lazyLoad("character", "/riho.png");

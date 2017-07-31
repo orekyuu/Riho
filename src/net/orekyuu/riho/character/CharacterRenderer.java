@@ -23,6 +23,9 @@ public class CharacterRenderer {
     }
 
     void render(Component c, Graphics g, int x, int y, int width, int height) {
+        if (!(c.getParent() instanceof JViewport)) {
+            return;
+        }
         JViewport viewport = (JViewport) c.getParent();
         width = viewport.getWidth();
         height = viewport.getHeight();
