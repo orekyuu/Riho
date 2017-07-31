@@ -4,9 +4,7 @@ import com.intellij.notification.Notification;
 import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.project.Project;
-import net.orekyuu.riho.character.Emotion;
 import net.orekyuu.riho.character.FacePattern;
-import net.orekyuu.riho.character.Loop;
 import net.orekyuu.riho.character.Reaction;
 import net.orekyuu.riho.topics.RihoReactionNotifier;
 import org.jetbrains.annotations.NotNull;
@@ -18,8 +16,8 @@ import java.util.List;
 public class NotificationListener implements Notifications {
 
     private final Project project;
-    List<String> VCS_FAILED = Arrays.asList("Push failed", "Push partially failed", "Push rejected", "Push partially rejected");
-    List<String> VCS_SUCCESS = Arrays.asList("Push successful");
+    private List<String> VCS_PUSH_FAILED = Arrays.asList("Push failed", "Push partially failed", "Push rejected", "Push partially rejected");
+    private List<String> VCS_PUSH_SUCCESS = Arrays.asList("Push successful");
 
     public NotificationListener(Project project) {
         this.project = project;
@@ -28,15 +26,23 @@ public class NotificationListener implements Notifications {
     @Override
     public void notify(@NotNull Notification notification) {
         RihoReactionNotifier publisher = project.getMessageBus().syncPublisher(RihoReactionNotifier.REACTION_NOTIFIER);
-        if (VCS_FAILED.contains(notification.getTitle())) {
-            publisher.reaction(Reaction.of(FacePattern.SYUN, Duration.ofSeconds(5), Emotion.SWEAT, Loop.once()));
+        if (VCS_PUSH_FAILED.contains(notification.getTitle())) {
+            publisher.reaction(Reaction.of(FacePattern.AWAWA, Duration.ofSeconds(3)));
             return;
         }
 
-        if (VCS_SUCCESS.contains(notification.getTitle())) {
-            publisher.reaction(Reaction.of(FacePattern.SMILE2, Duration.ofSeconds(5)));
+        if (VCS_PUSH_SUCCESS.contains(notification.getTitle())) {
+            publisher.reaction(Reaction.of(FacePattern.FUN, Duration.ofSeconds(3)));
             return;
         }
+
+        if (isVcsMessage(notification) && notification.getContent().matches("^\\d+ files? committed: .+$")) {
+            publisher.reaction(Reaction.of(FacePattern.SMILE2, Duration.ofSeconds(3)));
+        }
+    }
+
+    private boolean isVcsMessage(Notification notification) {
+        return notification.getGroupId().equals("Vcs Messages");
     }
 
     @Override

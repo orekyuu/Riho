@@ -38,9 +38,13 @@ public class TestListener extends TestStatusListener {
             failedCount = 0;
         } else {
             if (failedCount < 1) {
-                notifier.reaction(Reaction.of(FacePattern.JITO, Duration.ofSeconds(5)));
-            } else {
+                notifier.reaction(Reaction.of(FacePattern.SMILE2, Duration.ofSeconds(3), Emotion.SWEAT, Loop.once()));
+            } else if (failedCount < 2){
                 notifier.reaction(Reaction.of(FacePattern.SYUN, Duration.ofSeconds(5), Emotion.SWEAT, Loop.once()));
+            } else if (failedCount < 3){
+                notifier.reaction(Reaction.of(FacePattern.SYUN, Duration.ofSeconds(5), Emotion.QUESTION, Loop.once()));
+            } else {
+                notifier.reaction(Reaction.of(FacePattern.JITO, Duration.ofSeconds(5), Emotion.QUESTION, Loop.once()));
             }
             failedCount++;
         }
