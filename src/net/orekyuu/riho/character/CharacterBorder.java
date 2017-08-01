@@ -15,17 +15,17 @@ public class CharacterBorder implements Border, RihoReactionNotifier, ActionList
     private final CharacterRenderer characterRenderer;
     private final Timer timer;
     private Component component;
+    private final int REPAINT_DELAY = 30;
 
     public CharacterBorder(JComponent component) throws IOException {
         this.component = component;
-        timer = new Timer(30, this);
+        timer = new Timer(REPAINT_DELAY, this);
         timer.start();
         characterRenderer = new CharacterRenderer();
     }
 
     @Override
     public void paintBorder(Component c, Graphics g, int x, int y, int width, int height) {
-        Graphics2D g2d = (Graphics2D) g;
         characterRenderer.render(c, g, x, y, width, height);
     }
 
@@ -46,7 +46,7 @@ public class CharacterBorder implements Border, RihoReactionNotifier, ActionList
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        component.repaint();
+        component.repaint(REPAINT_DELAY);
     }
 
     public void dispose() {
