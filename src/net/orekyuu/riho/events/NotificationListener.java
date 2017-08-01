@@ -18,6 +18,8 @@ public class NotificationListener implements Notifications {
     private final Project project;
     private List<String> VCS_PUSH_FAILED = Arrays.asList("Push failed", "Push partially failed", "Push rejected", "Push partially rejected");
     private List<String> VCS_PUSH_SUCCESS = Arrays.asList("Push successful");
+    private List<String> VCS_REBASE_SUCCESS = Arrays.asList("Rebase Successful");
+    private List<String> VCS_REBASE_FAILED = Arrays.asList("Rebase Suspended", "Rebase Failed");
 
     public NotificationListener(Project project) {
         this.project = project;
@@ -32,6 +34,16 @@ public class NotificationListener implements Notifications {
         }
 
         if (VCS_PUSH_SUCCESS.contains(notification.getTitle())) {
+            publisher.reaction(Reaction.of(FacePattern.FUN, Duration.ofSeconds(3)));
+            return;
+        }
+
+        if (VCS_REBASE_FAILED.contains(notification.getTitle())) {
+            publisher.reaction(Reaction.of(FacePattern.AWAWA, Duration.ofSeconds(3)));
+            return;
+        }
+
+        if (VCS_REBASE_SUCCESS.contains(notification.getTitle())) {
             publisher.reaction(Reaction.of(FacePattern.FUN, Duration.ofSeconds(3)));
             return;
         }
