@@ -40,14 +40,14 @@ public class IdeActionListener implements AnActionListener {
 
     private Instant lastInputTime = Instant.MIN;
     private int comboCount = 0;
-    private int comboCoolTimeSec = 2;
+    private static final int comboCoolTimeSec = 1;
     @Override
     public void beforeEditorTyping(char c, DataContext dataContext) {
         Instant now = Instant.now();
         Duration between = Duration.between(lastInputTime, now);
         lastInputTime = now;
 
-        if (between.getSeconds() < 3) {
+        if (between.getSeconds() < comboCoolTimeSec) {
             comboCount++;
         } else {
             comboCount = 0;
