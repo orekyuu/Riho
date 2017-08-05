@@ -36,8 +36,8 @@ public class CharacterRenderer {
             return;
         }
 
-        int imageWidth = ImageUtil.defaultScale(characterBase.getWidth());
-        int imageHeight = ImageUtil.defaultScale(characterBase.getHeight());
+        int imageWidth = characterBase.getWidth();
+        int imageHeight = characterBase.getHeight();
         int margin = ImageUtil.defaultScale(30);
         int charaX = width - imageWidth - margin + x;
         int charaY = height - imageHeight + y;
@@ -106,7 +106,7 @@ public class CharacterRenderer {
     }
 
     private boolean isHide(int width, int height) {
-        return width < ImageUtil.defaultScale(characterBase.getWidth()) || height < ImageUtil.defaultScale(characterBase.getHeight());
+        return width < characterBase.getWidth() || height < characterBase.getHeight();
     }
 
     void setReaction(Reaction reaction) {
