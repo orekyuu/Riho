@@ -7,20 +7,37 @@ public abstract class Animation {
 
     private Instant startTime;
     private final Duration duration;
+    private final Duration delay;
     double valueFrom;
     double valueTo;
     double value;
 
     public Animation(Instant startTime, Duration duration) {
+        this(startTime, duration, Duration.ZERO);
+    }
+
+    public Animation(Instant startTime, Duration duration, Duration delay) {
         this.startTime = startTime;
         this.duration = duration;
+        this.delay = delay;
     }
 
     final double rate(Duration time) {
-        if (duration.toMillis() == 0) {
+        long duration = this.duration.toMillis();
+        long delay = this.delay.toMillis();
+        long currentTime = time.toMillis();
+        // delay中はrateは増えない
+        if (currentTime < delay) {
             return 0;
         }
-        double rate = (double) time.toMillis() / duration.toMillis();
+
+        long totalTime = delay + duration;
+        // ゼロ除算させない
+        if (totalTime == 0) {
+            return 0;
+        }
+
+        double rate = (double) time.toMillis() / totalTime;
         return Math.min(1, Math.max(rate, 0));
     }
 

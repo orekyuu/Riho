@@ -8,6 +8,10 @@ public class LinearAnimation extends Animation {
         super(startTime, duration);
     }
 
+    public LinearAnimation(Instant startTime, Duration duration, Duration delay) {
+        super(startTime, duration, delay);
+    }
+
     @Override
     public double getValue(Instant now) {
         double distance = (valueTo - valueFrom) * rate(time(now));
