@@ -13,7 +13,7 @@ import java.time.Instant;
 public class EmotionRenderer implements Renderer{
 
     private Reaction prevReaction;
-    private EmotionRendererBase emotionRendererBase = new EmptyRenderer();
+    private EmotionRendererBase emotionRendererBase = new SadRenderer(Loop.infinite());
     @Override
     public void render(Instant now, Graphics2D g, CharacterPosition pos, Riho riho) {
         Reaction currentReaction = riho.getReaction();
@@ -38,6 +38,7 @@ public class EmotionRenderer implements Renderer{
             case NONE: return new EmptyRenderer();
             case QUESTION: return new QuestionRenderer(loop);
             case DROP: return new SweatRenderer(loop);
+            case SAD: return new SadRenderer(loop);
         }
         return new EmptyRenderer();
     }
