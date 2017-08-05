@@ -3,6 +3,7 @@ package net.orekyuu.riho.character;
 import net.orekyuu.riho.RihoPlugin;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.io.UncheckedIOException;
@@ -59,7 +60,13 @@ public class ImageResources {
     private static BufferedImage lazyLoad(String key, String path) {
         return resources.computeIfAbsent(key, str -> {
             try {
-                return ImageIO.read(RihoPlugin.class.getResourceAsStream(path));
+                BufferedImage read = ImageIO.read(RihoPlugin.class.getResourceAsStream(path));
+                int width = ImageUtil.defaultScale(read.getWidth());
+                int height = ImageUtil.defaultScale(read.getHeight());
+                BufferedImage resultImage = new BufferedImage(width, height, read.getType());
+                Graphics resultImageGraphics = resultImage.getGraphics();
+                resultImageGraphics.drawImage(read.getScaledInstance(width, height, Image.SCALE_AREA_AVERAGING), 0, 0, width, height, null);
+                return resultImage;
             } catch (IOException e) {
                 throw new UncheckedIOException(e);
             }

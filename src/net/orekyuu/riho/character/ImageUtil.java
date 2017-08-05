@@ -16,11 +16,11 @@ public class ImageUtil {
     }
 
     public static void drawImage(Graphics g, BufferedImage image, int x, int y) {
-        g.drawImage(image, x, y, defaultScale(image.getWidth()), defaultScale(image.getHeight()), null);
+        g.drawImage(image, x, y, null);
     }
 
     public static void drawImage(Graphics g, BufferedImage image, int x, int y, double a) {
         ((Graphics2D) g).setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, (float) a));
-        g.drawImage(image, x, y, defaultScale(image.getWidth()), defaultScale(image.getHeight()), null);
+        g.drawImage(image, x, y, null);
     }
 }
