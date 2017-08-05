@@ -16,7 +16,7 @@ public class CharacterRenderer {
     private Reaction reaction;
     private Instant reactionStartTime;
     private BufferedImage characterBase;
-    private EmotionRenderer emotionRenderer = new EmptyRenderer();
+    private EmotionRenderer emotionRenderer = new SweatRenderer(Loop.infinite());
 
     CharacterRenderer() {
         characterBase = ImageResources.character();

@@ -24,11 +24,11 @@ public class SweatRenderer extends EmotionRenderer {
         Duration currentLoopTime = Duration.between(getLoopStartTime(), Instant.now());
         long millis = currentLoopTime.toMillis();
 
-        int posY = charaY + ImageUtil.defaultScale(40);
+        int posY = charaY + ImageUtil.defaultScale(50);
         double a = Math.min(millis, loopTime - waitTime) / (loopTime - waitTime);
 
         posY += ImageUtil.defaultScale(20) * a;
-        ImageUtil.drawImage(g, image, charaX + ImageUtil.defaultScale(20), posY, a);
+        ImageUtil.drawImage(g, image, charaX + ImageUtil.defaultScale(110), posY, a);
         if (loopTime < millis) {
             nextLoop();
         }

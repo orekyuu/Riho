@@ -1,6 +1,5 @@
 package net.orekyuu.riho.character.emotion;
 
-import com.intellij.ui.JBColor;
 import net.orekyuu.riho.character.ImageResources;
 import net.orekyuu.riho.character.ImageUtil;
 import net.orekyuu.riho.character.Loop;
@@ -26,7 +25,7 @@ public class QuestionRenderer extends EmotionRenderer {
     public void render(Graphics g, int charaX, int charaY) {
         Duration currentLoopTime = Duration.between(getLoopStartTime(), Instant.now());
 
-        int posY = charaY + 10;
+        int posY = charaY + 40;
         long millis = currentLoopTime.toMillis();
 
         float alpha = 1.0f;
@@ -38,7 +37,7 @@ public class QuestionRenderer extends EmotionRenderer {
         } else {
             alpha = Math.max(((float)loopTime - millis) / (float)loopTime, 0);
         }
-        ImageUtil.drawImage(g, image, charaX + ImageUtil.defaultScale(190), posY, alpha);
+        ImageUtil.drawImage(g, image, charaX + ImageUtil.defaultScale(340), posY, alpha);
 
         if (loopTime < millis) {
             nextLoop();
