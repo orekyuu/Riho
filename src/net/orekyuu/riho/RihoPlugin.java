@@ -11,6 +11,8 @@ import com.intellij.openapi.project.Project;
 import com.intellij.refactoring.listeners.RefactoringEventListener;
 import com.intellij.util.messages.MessageBusConnection;
 import net.orekyuu.riho.character.CharacterBorder;
+import net.orekyuu.riho.character.Riho;
+import net.orekyuu.riho.character.renderer.CharacterRenderer;
 import net.orekyuu.riho.events.IdeActionListener;
 import net.orekyuu.riho.events.NotificationListener;
 import net.orekyuu.riho.events.RefactoringListener;
@@ -46,11 +48,12 @@ public class RihoPlugin implements ProjectComponent {
                 }
                 JComponent component = editor.getContentComponent();
                 try {
-                    CharacterBorder character = new CharacterBorder(component);
+                    Riho riho = new Riho();
+                    CharacterBorder character = new CharacterBorder(component, new CharacterRenderer(riho), riho);
                     characterBorders.put(editor, character);
                     component.setBorder(character);
                     connect = project.getMessageBus().connect();
-                    connect.subscribe(RihoReactionNotifier.REACTION_NOTIFIER, character);
+                    connect.subscribe(RihoReactionNotifier.REACTION_NOTIFIER, riho);
                 } catch (IOException e) {
                     e.printStackTrace();
                 }

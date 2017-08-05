@@ -7,10 +7,10 @@ import com.intellij.openapi.actionSystem.AnActionEvent;
 import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.ex.AnActionListener;
 import com.intellij.openapi.project.Project;
-import net.orekyuu.riho.character.Emotion;
 import net.orekyuu.riho.character.FacePattern;
 import net.orekyuu.riho.character.Loop;
 import net.orekyuu.riho.character.Reaction;
+import net.orekyuu.riho.emotion.Emotion;
 import net.orekyuu.riho.topics.RihoReactionNotifier;
 
 import java.time.Duration;

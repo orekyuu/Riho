@@ -1,18 +1,18 @@
-package net.orekyuu.riho.character.emotion;
+package net.orekyuu.riho.emotion.renderer;
 
 import net.orekyuu.riho.character.Loop;
+import net.orekyuu.riho.character.renderer.Renderer;
 
-import java.awt.*;
 import java.time.Instant;
 
-public abstract class EmotionRenderer {
+public abstract class EmotionRendererBase implements Renderer {
 
     private final Loop maxLoopCount;
     private Instant loopStartTime;
     private boolean finished;
     private int loopCount;
 
-    public EmotionRenderer(Loop maxLoopCount) {
+    public EmotionRendererBase(Loop maxLoopCount) {
         this.maxLoopCount = maxLoopCount;
         this.loopStartTime = Instant.now();
     }
@@ -44,6 +44,4 @@ public abstract class EmotionRenderer {
             finish();
         }
     }
-
-    public abstract void render(Graphics g, int charaX, int charaY);
 }

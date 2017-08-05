@@ -1,15 +1,17 @@
-package net.orekyuu.riho.character.emotion;
+package net.orekyuu.riho.emotion.renderer;
 
 import net.orekyuu.riho.character.ImageResources;
 import net.orekyuu.riho.character.ImageUtil;
 import net.orekyuu.riho.character.Loop;
+import net.orekyuu.riho.character.Riho;
+import net.orekyuu.riho.character.renderer.CharacterPosition;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.time.Duration;
 import java.time.Instant;
 
-public class QuestionRenderer extends EmotionRenderer {
+public class QuestionRenderer extends EmotionRendererBase {
 
     private final BufferedImage image;
     private double startMoveTime = 700;
@@ -20,12 +22,11 @@ public class QuestionRenderer extends EmotionRenderer {
         super(loopCount);
         image = ImageResources.emotionQuestion();
     }
-
     @Override
-    public void render(Graphics g, int charaX, int charaY) {
-        Duration currentLoopTime = Duration.between(getLoopStartTime(), Instant.now());
+    public void render(Instant now, Graphics2D g, CharacterPosition pos, Riho riho) {
+        Duration currentLoopTime = Duration.between(getLoopStartTime(), now);
 
-        int posY = charaY + 40;
+        int posY = pos.getY() + 40;
         long millis = currentLoopTime.toMillis();
 
         float alpha = 1.0f;
@@ -37,7 +38,7 @@ public class QuestionRenderer extends EmotionRenderer {
         } else {
             alpha = Math.max(((float)loopTime - millis) / (float)loopTime, 0);
         }
-        ImageUtil.drawImage(g, image, charaX + ImageUtil.defaultScale(340), posY, alpha);
+        ImageUtil.drawImage(g, image, pos.getX() + ImageUtil.defaultScale(340), posY, alpha);
 
         if (loopTime < millis) {
             nextLoop();

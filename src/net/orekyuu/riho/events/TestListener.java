@@ -3,10 +3,10 @@ package net.orekyuu.riho.events;
 import com.intellij.execution.testframework.AbstractTestProxy;
 import com.intellij.execution.testframework.TestStatusListener;
 import com.intellij.openapi.project.Project;
-import net.orekyuu.riho.character.Emotion;
 import net.orekyuu.riho.character.FacePattern;
 import net.orekyuu.riho.character.Loop;
 import net.orekyuu.riho.character.Reaction;
+import net.orekyuu.riho.emotion.Emotion;
 import net.orekyuu.riho.topics.RihoReactionNotifier;
 import org.jetbrains.annotations.Nullable;
 

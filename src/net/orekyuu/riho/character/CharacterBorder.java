@@ -1,7 +1,7 @@
 package net.orekyuu.riho.character;
 
 import com.intellij.util.ui.JBUI;
-import net.orekyuu.riho.topics.RihoReactionNotifier;
+import net.orekyuu.riho.character.renderer.CharacterRenderer;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -9,19 +9,22 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.time.Instant;
 
-public class CharacterBorder implements Border, RihoReactionNotifier, ActionListener {
+public class CharacterBorder implements Border, ActionListener {
 
     private final CharacterRenderer characterRenderer;
     private final Timer timer;
+    private final Riho riho;
     private Component component;
     private final int REPAINT_DELAY = 30;
 
-    public CharacterBorder(JComponent component) throws IOException {
+    public CharacterBorder(JComponent component, CharacterRenderer characterRenderer, Riho riho) throws IOException {
         this.component = component;
         timer = new Timer(REPAINT_DELAY, this);
         timer.start();
-        characterRenderer = new CharacterRenderer();
+        this.characterRenderer = characterRenderer;
+        this.riho = riho;
     }
 
     @Override
@@ -40,12 +43,8 @@ public class CharacterBorder implements Border, RihoReactionNotifier, ActionList
     }
 
     @Override
-    public void reaction(Reaction reaction) {
-        characterRenderer.setReaction(reaction);
-    }
-
-    @Override
     public void actionPerformed(ActionEvent e) {
+        riho.updateCharacter(Instant.now());
         component.repaint(REPAINT_DELAY);
     }
 

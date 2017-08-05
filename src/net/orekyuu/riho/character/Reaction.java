@@ -1,5 +1,7 @@
 package net.orekyuu.riho.character;
 
+import net.orekyuu.riho.emotion.Emotion;
+
 import java.time.Duration;
 
 public class Reaction {
