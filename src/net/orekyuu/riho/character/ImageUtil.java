@@ -5,7 +5,7 @@ import java.awt.image.BufferedImage;
 
 public class ImageUtil {
 
-    public static final double DEFAULT_SCALE = 0.75;
+    public static final double DEFAULT_SCALE = 0.5;
 
     public static int scale(int original, double scale) {
         return (int) (original * scale);

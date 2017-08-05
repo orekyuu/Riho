@@ -100,8 +100,8 @@ public class CharacterRenderer {
         }
 
         BufferedImage faceImage = getFaceImage(pattern);
-        int mx = ImageUtil.defaultScale(67);
-        int my = ImageUtil.defaultScale(95);
+        int mx = ImageUtil.defaultScale(107);
+        int my = ImageUtil.defaultScale(120);
         ImageUtil.drawImage(g, faceImage, x + mx, y + my);
     }
 
