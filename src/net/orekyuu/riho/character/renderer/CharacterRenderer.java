@@ -1,5 +1,6 @@
 package net.orekyuu.riho.character.renderer;
 
+import com.intellij.util.ui.JBSwingUtilities;
 import net.orekyuu.riho.character.ImageResources;
 import net.orekyuu.riho.character.ImageUtil;
 import net.orekyuu.riho.character.Riho;
@@ -45,18 +46,14 @@ public class CharacterRenderer {
         int margin = ImageUtil.defaultScale(30);
         int charaX = width - imageWidth - margin + x;
         int charaY = height - imageHeight + y;
-        Graphics2D g2d = (Graphics2D) g;
+        Graphics2D g2d = JBSwingUtilities.runGlobalCGTransform((JComponent) c, g);
         CharacterPosition position = CharacterPosition.of(charaX, charaY);
 
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 0.3f));
-        ImageUtil.drawImage(g2d, characterBase, x + charaX, y + charaY);
+        ImageUtil.drawImage(g2d, characterBase, charaX, charaY);
         faceRenderer.render(now, g2d, position, riho);
         g2d.setComposite(AlphaComposite.getInstance(AlphaComposite.SRC_OVER, 1));
         emotionRenderer.render(now, g2d, position, riho);
-    }
-
-    private void renderCharaBase(Graphics g, int x, int y) {
-        ImageUtil.drawImage(g, characterBase, x, y);
     }
 
     private boolean isHide(int width, int height) {
