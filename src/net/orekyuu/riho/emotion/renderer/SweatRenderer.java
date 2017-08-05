@@ -18,7 +18,7 @@ public class SweatRenderer extends EmotionRendererBase {
     private double waitTime = 600;
     public SweatRenderer(Loop maxLoopCount) {
         super(maxLoopCount);
-        image = ImageResources.emotionSweat();
+        image = ImageResources.emotionDrop();
     }
 
     @Override
