@@ -37,7 +37,12 @@ public class EmotionRenderer implements Renderer{
         switch (emotion) {
             case NONE: return new EmptyRenderer();
             case QUESTION: return new QuestionRenderer(loop);
-            case SWEAT: return new SweatRenderer(loop);
+            case DROP: return new DropRenderer(loop);
+            case SAD: return new SadRenderer(loop);
+            case ANGER: return new AngerRenderer(loop);
+            case MOJYA: return new MojaRenderer(loop);
+            case SURPRISED: return new SurprisedRenderer(loop);
+            case SWEAT:return new SweatRenderer(loop);
         }
         return new EmptyRenderer();
     }

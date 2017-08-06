@@ -17,14 +17,40 @@ public class ImageResources {
         return lazyLoad("character", "/riho.png");
     }
 
+    // Emotions
     public static BufferedImage emotionQuestion() {
         return lazyLoad("emotion.question", "/emotion/question.png");
     }
 
-    public static BufferedImage emotionSweat() {
-        return lazyLoad("emotion.sweat", "/emotion/sweat.png");
+    public static BufferedImage emotionDrop() {
+        return lazyLoad("emotion.drop", "/emotion/drop.png");
     }
 
+    public static BufferedImage emotionMojya() {
+        return lazyLoad("emotion.mojya", "/emotion/mojya.png");
+    }
+
+    public static BufferedImage emotionSweat1() {
+        return lazyLoad("emotion.sweat1", "/emotion/ase1.png");
+    }
+
+    public static BufferedImage emotionSweat2() {
+        return lazyLoad("emotion.sweat2", "/emotion/ase2.png");
+    }
+
+    public static BufferedImage emotionSurprised() {
+        return lazyLoad("emotion.surprised", "/emotion/surprised.png");
+    }
+
+    public static BufferedImage emotionAnger() {
+        return lazyLoad("emotion.anger", "/emotion/anger.png");
+    }
+
+    public static BufferedImage emotionFeelSad() {
+        return lazyLoad("emotion.feel-sad", "/emotion/doyon.png");
+    }
+
+    // Faces
     public static BufferedImage faceNormal() {
         return lazyLoad("face.normal", "/face/normal.png");
     }

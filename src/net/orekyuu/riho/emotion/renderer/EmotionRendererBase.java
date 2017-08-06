@@ -3,6 +3,7 @@ package net.orekyuu.riho.emotion.renderer;
 import net.orekyuu.riho.character.Loop;
 import net.orekyuu.riho.character.renderer.Renderer;
 
+import java.time.Duration;
 import java.time.Instant;
 
 public abstract class EmotionRendererBase implements Renderer {
@@ -35,6 +36,10 @@ public abstract class EmotionRendererBase implements Renderer {
 
     public void resetLoopTime() {
         loopStartTime = Instant.now();
+    }
+
+    protected final Duration currentLoopDuration(Instant now) {
+        return Duration.between(loopStartTime, now);
     }
 
     protected void nextLoop() {
