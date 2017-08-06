@@ -4,7 +4,9 @@ import com.intellij.openapi.project.Project;
 import com.intellij.refactoring.listeners.RefactoringEventData;
 import com.intellij.refactoring.listeners.RefactoringEventListener;
 import net.orekyuu.riho.character.FacePattern;
+import net.orekyuu.riho.character.Loop;
 import net.orekyuu.riho.character.Reaction;
+import net.orekyuu.riho.emotion.Emotion;
 import net.orekyuu.riho.topics.RihoReactionNotifier;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -32,7 +34,7 @@ public class RefactoringListener implements RefactoringEventListener {
     @Override
     public void conflictsDetected(@NotNull String s, @NotNull RefactoringEventData refactoringEventData) {
         RihoReactionNotifier publisher = project.getMessageBus().syncPublisher(RihoReactionNotifier.REACTION_NOTIFIER);
-        publisher.reaction(Reaction.of(FacePattern.JITO, Duration.ofSeconds(3)));
+        publisher.reaction(Reaction.of(FacePattern.JITO, Duration.ofSeconds(3), Emotion.MOJYA, Loop.once()));
     }
 
     @Override

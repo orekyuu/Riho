@@ -58,7 +58,8 @@ public class IdeActionListener implements AnActionListener {
         switch (comboCount) {
             case 5: publisher.reaction(Reaction.of(FacePattern.SMILE1, Duration.ofSeconds(3))); break;
             case 10: publisher.reaction(Reaction.of(FacePattern.SMILE2, Duration.ofSeconds(3))); break;
-            case 15: publisher.reaction(Reaction.of(FacePattern.FUN, Duration.ofSeconds(5))); break;
+            case 15: publisher.reaction(Reaction.of(FacePattern.SURPRISE, Duration.ofSeconds(5))); break;
+            case 20:
             case 30: publisher.reaction(Reaction.of(FacePattern.AWAWA, Duration.ofSeconds(3))); break;
         }
     }

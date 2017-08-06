@@ -30,7 +30,7 @@ public class DropRenderer extends EmotionRendererBase {
         double a = Math.min(millis, loopTime - waitTime) / (loopTime - waitTime);
 
         posY += ImageUtil.defaultScale(20) * a;
-        ImageUtil.drawImage(g, image, pos.getX() + ImageUtil.defaultScale(110), posY, a);
+        ImageUtil.drawImage(g, image, pos.getX() + ImageUtil.defaultScale(110), posY, Math.max(0, Math.min(1, a)));
         if (loopTime < millis) {
             nextLoop();
         }
