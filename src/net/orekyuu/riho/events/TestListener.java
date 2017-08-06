@@ -31,7 +31,7 @@ public class TestListener extends TestStatusListener {
             return;
         }
         RihoReactionNotifier notifier = project.getMessageBus().syncPublisher(RihoReactionNotifier.REACTION_NOTIFIER);
-        if (abstractTestProxy.isPassed()) {
+        if (abstractTestProxy.isPassed() || abstractTestProxy.isIgnored()) {
             if (failedCount == 0) {
                 notifier.reaction(Reaction.of(FacePattern.SMILE2, Duration.ofSeconds(5)));
             } else {
