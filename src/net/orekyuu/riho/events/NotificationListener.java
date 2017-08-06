@@ -5,7 +5,9 @@ import com.intellij.notification.NotificationDisplayType;
 import com.intellij.notification.Notifications;
 import com.intellij.openapi.project.Project;
 import net.orekyuu.riho.character.FacePattern;
+import net.orekyuu.riho.character.Loop;
 import net.orekyuu.riho.character.Reaction;
+import net.orekyuu.riho.emotion.Emotion;
 import net.orekyuu.riho.topics.RihoReactionNotifier;
 import org.jetbrains.annotations.NotNull;
 
@@ -29,22 +31,22 @@ public class NotificationListener implements Notifications {
     public void notify(@NotNull Notification notification) {
         RihoReactionNotifier publisher = project.getMessageBus().syncPublisher(RihoReactionNotifier.REACTION_NOTIFIER);
         if (VCS_PUSH_FAILED.contains(notification.getTitle())) {
-            publisher.reaction(Reaction.of(FacePattern.AWAWA, Duration.ofSeconds(3)));
+            publisher.reaction(Reaction.of(FacePattern.JITO, Duration.ofSeconds(3), Emotion.SAD, Loop.once()));
             return;
         }
 
         if (VCS_PUSH_SUCCESS.contains(notification.getTitle())) {
-            publisher.reaction(Reaction.of(FacePattern.FUN, Duration.ofSeconds(3)));
+            publisher.reaction(Reaction.of(FacePattern.SMILE2, Duration.ofSeconds(3)));
             return;
         }
 
         if (VCS_REBASE_FAILED.contains(notification.getTitle())) {
-            publisher.reaction(Reaction.of(FacePattern.AWAWA, Duration.ofSeconds(3)));
+            publisher.reaction(Reaction.of(FacePattern.JITO, Duration.ofSeconds(3), Emotion.MOJYA, Loop.once()));
             return;
         }
 
         if (VCS_REBASE_SUCCESS.contains(notification.getTitle())) {
-            publisher.reaction(Reaction.of(FacePattern.FUN, Duration.ofSeconds(3)));
+            publisher.reaction(Reaction.of(FacePattern.SMILE2, Duration.ofSeconds(3)));
             return;
         }
 
