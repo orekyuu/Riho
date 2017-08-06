@@ -26,6 +26,7 @@ import java.util.HashMap;
 public class RihoPlugin implements ProjectComponent {
 
     private final Project project;
+    private IdeActionListener ideActionListener;
 
     public RihoPlugin(Project project) {
         this.project = project;
@@ -73,11 +74,13 @@ public class RihoPlugin implements ProjectComponent {
         MessageBusConnection connect = project.getMessageBus().connect();
         connect.subscribe(Notifications.TOPIC, new NotificationListener(project));
         connect.subscribe(RefactoringEventListener.REFACTORING_EVENT_TOPIC, new RefactoringListener(project));
-        ActionManager.getInstance().addAnActionListener(new IdeActionListener(project));
+        ideActionListener = new IdeActionListener(project);
+        ActionManager.getInstance().addAnActionListener(ideActionListener);
     }
 
     @Override
     public void disposeComponent() {
+        ActionManager.getInstance().removeAnActionListener(ideActionListener);
     }
 
     @Override
