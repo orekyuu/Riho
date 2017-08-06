@@ -13,8 +13,7 @@ public class EaseInAnimation extends Animation {
     }
 
     @Override
-    public double getValue(Instant now) {
-        double rate = rate(time(now));
+    public double getValue(double rate) {
         double distance = rate * rate;
         return valueFrom + (valueTo * distance);
     }

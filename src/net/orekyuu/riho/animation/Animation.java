@@ -53,9 +53,13 @@ public abstract class Animation {
         this.valueTo = value;
     }
 
-    public final void resetAndRestart(Instant now) {
+    public void resetAndRestart(Instant now) {
         startTime = now;
     }
 
-    public abstract double getValue(Instant now);
+    public double getValue(Instant now) {
+        return getValue(rate(time(now)));
+    }
+
+    public abstract double getValue(double rate);
 }

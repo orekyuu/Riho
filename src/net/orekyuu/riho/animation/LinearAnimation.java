@@ -13,8 +13,8 @@ public class LinearAnimation extends Animation {
     }
 
     @Override
-    public double getValue(Instant now) {
-        double distance = (valueTo - valueFrom) * rate(time(now));
+    public double getValue(double rate) {
+        double distance = (valueTo - valueFrom) * rate;
         return valueFrom + distance;
     }
 }
