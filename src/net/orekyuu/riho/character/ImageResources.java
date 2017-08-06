@@ -31,11 +31,11 @@ public class ImageResources {
     }
 
     public static BufferedImage emotionSweat1() {
-        return lazyLoad("emotion.sweat1", "/emotion/sweat1.png");
+        return lazyLoad("emotion.sweat1", "/emotion/ase1.png");
     }
 
     public static BufferedImage emotionSweat2() {
-        return lazyLoad("emotion.sweat2", "/emotion/sweat2.png");
+        return lazyLoad("emotion.sweat2", "/emotion/ase2.png");
     }
 
     public static BufferedImage emotionSurprised() {
