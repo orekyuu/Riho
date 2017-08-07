@@ -1,36 +1,40 @@
 <idea-plugin>
-  <id>net.orekyuu.riho</id>
-  <name>Riho</name>
-  <version>1.0.1</version>
-  <vendor email="orekyuu@gmail.com" url="https://github.com/orekyuu">orekyuu</vendor>
+    <id>net.orekyuu.riho</id>
+    <name>Riho</name>
+    <version>1.0.1</version>
+    <vendor email="orekyuu@gmail.com" url="https://github.com/orekyuu">orekyuu</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       Show pretty girls to support development:)
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
-  <idea-version since-build="145.0"/>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/build_number_ranges.html for description -->
+    <idea-version since-build="145.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <depends>com.intellij.modules.lang</depends>
+    <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
+         on how to target different products -->
+    <depends>com.intellij.modules.lang</depends>
+    <depends>com.intellij.modules.platform</depends>
+    <depends>com.intellij.modules.xml</depends>
+    <depends>com.intellij.modules.vcs</depends>
+    <depends>com.intellij.modules.xdebugger</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <!-- Add your extensions here -->
-    <testStatusListener implementation="net.orekyuu.riho.events.TestListener"/>
-  </extensions>
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Add your extensions here -->
+        <testStatusListener implementation="net.orekyuu.riho.events.TestListener"/>
+    </extensions>
 
-  <actions>
-    <!-- Add your actions here -->
-  </actions>
+    <actions>
+        <!-- Add your actions here -->
+    </actions>
 
-  <project-components>
-    <component>
-      <implementation-class>net.orekyuu.riho.RihoPlugin</implementation-class>
-    </component>
-  </project-components>
+    <project-components>
+        <component>
+            <implementation-class>net.orekyuu.riho.RihoPlugin</implementation-class>
+        </component>
+    </project-components>
 </idea-plugin>
