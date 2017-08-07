@@ -31,11 +31,7 @@ public abstract class Animation {
             return 0;
         }
 
-        long totalTime = delay + duration;
-        // ゼロ除算させない
-        if (totalTime == 0) {
-            return 0;
-        }
+        long totalTime = delay + duration + 1;
 
         double rate = (double) time.toMillis() / totalTime;
         return Math.min(1, Math.max(rate, 0));
