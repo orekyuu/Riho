@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>net.orekyuu.riho</id>
     <name>Riho</name>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <vendor email="orekyuu@gmail.com" url="https://github.com/orekyuu">orekyuu</vendor>
 
     <description><![CDATA[
